@@ -1524,7 +1524,7 @@ button:focus {
 
 .card-image2 {
     grid-area: image;
-    background: url("../images/img1.jpg");
+    background: url("../images/artificial-intelligence-companies.jpg");
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-size: cover;
