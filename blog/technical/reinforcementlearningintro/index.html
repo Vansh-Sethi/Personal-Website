@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Reinforcement Learning: a Subtle Introduction ::
+        Vansh
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="On February 10th, 1996, IBM’s Deep Blue AI beat world champion Garry Kasparov at a game of chess.
+Google’s Alpha Go AI is the best GO player in the world and has crushed world champions over and over again.
+ But how is this even possible? How is it possible that a computer can outsmart humans? The answer… Reinforcement Learning.
+What is Reinforcement Learning? Reinforcement learning is a branch of Machine Learning and AI."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://vanshs.com/blog/technical/reinforcementlearningintro/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://vanshs.com/blog/assets/style.css" />
+
+<link rel="stylesheet" href="https://vanshs.com/blog/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://vanshs.com/blog/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://vanshs.com/blog/img/favicon.png" />
+
+
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Reinforcement Learning: a Subtle Introduction"/>
+<meta name="twitter:description" content="On February 10th, 1996, IBM’s Deep Blue AI beat world champion Garry Kasparov at a game of chess.
+Google’s Alpha Go AI is the best GO player in the world and has crushed world champions over and over again.
+ But how is this even possible? How is it possible that a computer can outsmart humans? The answer… Reinforcement Learning.
+What is Reinforcement Learning? Reinforcement learning is a branch of Machine Learning and AI."/>
+
+
+
+<meta property="og:title" content="Reinforcement Learning: a Subtle Introduction" />
+<meta property="og:description" content="On February 10th, 1996, IBM’s Deep Blue AI beat world champion Garry Kasparov at a game of chess.
+Google’s Alpha Go AI is the best GO player in the world and has crushed world champions over and over again.
+ But how is this even possible? How is it possible that a computer can outsmart humans? The answer… Reinforcement Learning.
+What is Reinforcement Learning? Reinforcement learning is a branch of Machine Learning and AI." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vanshs.com/blog/technical/reinforcementlearningintro/" />
+<meta property="article:published_time" content="2019-01-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-01-25T00:00:00+00:00" /><meta property="og:site_name" content="Vansh" />
+
+
+
+
+
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog/technical">Technical Articles</a></li>
+        
+      
+        
+          <li><a href="/blog/thoughts">Thoughts</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog/technical">Technical Articles</a></li>
+      
+    
+      
+        <li><a href="/blog/thoughts">Thoughts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Reinforcement Learning: a Subtle Introduction</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2019-01-25
+        </span>
+
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<blockquote>
+<p>On February 10th, 1996, IBM’s Deep Blue AI beat world champion Garry Kasparov at a game of chess.</p>
+<p>Google’s Alpha Go AI is the best GO player in the world and has crushed world champions over and over again.</p>
+</blockquote>
+<p>But how is this even possible? How is it possible that a computer can outsmart humans? The answer… <strong>Reinforcement Learning</strong>.</p>
+<h3 id="what-is-reinforcement-learning"><strong>What is Reinforcement Learning?</strong></h3>
+<p>Reinforcement learning is a branch of Machine Learning and AI. It takes a very specific approach to creating models to do certain things. The objective of reinforcement learning is to teach a computer/machine to perform a certain task with a high degree of success. (ex. win a chess game, play Mario Kart and win, etc.)</p>
+<p>It is also important to note what reinforcement learning isn’t. These models are artificial specific intelligence (ASIs), meaning they can only perform very specific tasks. These are not general artificial intelligence machines (AGIs) and** cannot **perform a breath of tasks. That is the next goal of AI, however that will not be discussed in this article.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*LfMDHf66zocLHxj5.gif" alt="A reinforcement learning model playing Mario"></p>
+<p><em>A reinforcement learning model playing Mario</em></p>
+<hr>
+<h2 id="how-reinforcement-learning-works">How Reinforcement learning Works?</h2>
+<p>To get a grasp for the essence of reinforcement learning, let’s break it down with this simple analogy:</p>
+<blockquote>
+<p>Imagine a child sees a fireplace for the first time. The child is intrigued and curious about the fireplace… so it naturally get closer to it. As the child gets closer, it feels the warmth of the fireplace and thus the child feels warm and happy.</p>
+<p>Furthermore, the child wants to feel even more happy and warm, so the child gets closer to the fireplace just until it can touch it. <strong><strong>🔥</strong></strong> The child is hurt and moves back away from the fireplace.</p>
+<p>The next time the child encounters a fireplace, it has <em>learned</em> to not get too close but stay at a reasonable distance so the child will get the <em>reward</em> of feeling warm without the punishment of being burned. This <em>action</em> is pleasing to the child.</p>
+</blockquote>
+<p>The reward of feeling warm is the child’s goal in this scenario. If we put this into an AI perspective, the AI or <em>agent</em>, desires to maximize some <em>reward</em> value by performing some sequence of <em>actions</em>.</p>
+<p>The AI, just like the child, is motivated by the reward. They both want to have as much reward as possible, which can be achieved through <em>trial and error</em>, in which they learn about the patterns when seeking for a reward. In the child scenario, the child quickly learned that getting too close sacrificed the reward, and wasn’t worth it. A computer might do the same, trying out different things until it finds a pattern that gives consistent high rewards. It *reinforces *patterns that give high rewards and keeps doing that certain task.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*xASwZpu5AVkCdIpd" alt=""></p>
+<p>The <strong>environment</strong> is where the action takes place or where tasks are carried out. For example, in our scenario from above, the environment was the room with the fireplace. The environment can also be video game environments, certain scenario rooms such as bowling alleys or kitchens, and everything else. Environments range for certain tasks.</p>
+<p>The **agent **is a computer or machine that controls some entity. For example, in our scenario the agent was the child. Another example could be a computer controlling Mario in Super Mario Bros. The agent is restrictive to the controls that the entity can perform. It can only use a set of rules that were predefined.</p>
+<p>The <strong>action</strong> is a move or a set of sequential moves performed by the agent. For example, in our scenario it was moving closer or further away from the fireplace. Simply put, it’s the actual part of the problem we are trying to solve. How do we create the best actions to fit a task.</p>
+<p>The <strong>reward</strong> is the measure of how well it performed a task within in an environment and how the motivation for the agent to get better. In our scenario, the reward was the warmth of the fireplace which was also an indicator that the agent was doing something good.</p>
+<p>Finally, the <strong>state</strong> is the computation of data that is given to the agent basically telling it where it is in the environment. In our scenario that would be letting the child know where it was after performing an action. It is used to computer more actions and reach an overall goal.</p>
+<p>They all connect through a simple procedure. First, our agent does an <em>action</em>. That action is processed through the *environment *and then a <em>reward</em> and <em>state</em> are fed to the agent. The reward tells it how well the <em>action</em> did and where the agent is in the environment, so it knows what to make in the future.</p>
+<p>The agent keeps trying things until one rewards high values. It will start to implement those patterns more until it creates a system for the environment. At that point it will know how to perform a task at any state in the environment, essentially solving our problem!</p>
+<p>There is still a question that needs to be answered however… how do we create efficient rewards so the agent is able to perform the task?</p>
+<hr>
+<h2 id="rewards--the-principle-of-reinforcement-learning"><strong>Rewards — the principle of Reinforcement Learning.</strong></h2>
+<p>Rewards are the motivation for an agent/computer to get better at a certain task, for example, in chess, the reward could be winning. Since the necessity of rewards are the basis of reinforcement learning, it is important to understand how to create efficient reward systems, through a process called <strong>Reward Shaping</strong></p>
+<p>For machines to converge on certain behaviors, it’s important when learning to know what is desired and what isn’t. For example, what is the desired goal when playing solitaire or checkers? It seems obvious for us but for a computer it isn’t as clear. In those cases, the goal is to simply win, which just means reaching certain parameters. So when shaping a reward model for the machine, you can tell it that when it wins, give it +1 reward and when it loses, -1. This forces the machine to find ways to always reach that +1 which is our intended goal.</p>
+<p>But how do we shape rewards for things that aren’t as clear cut as games, for example autonomous vehicles? The trick is to always consider the larger goal at play. In this case, it’s to get to point a to point b without crashing or causing harm. That in itself can be the reward for the machine, how far can it get without crashing. So whenever you are trying to create a reward function, just simply ask yourself what is the goal of the machine and write a program for those parameters. The computer in theory should get better.</p>
+<p>So we are equipped with the knowledge to create these agents / machines to perform certain tasks… so let’s jump into it!</p>
+<p>Well… there’s just one more thing to figure out…</p>
+<hr>
+<h2 id="simulations-and-how-to-train-reinforcement-learning-models"><strong>Simulations and How to train Reinforcement Learning Models</strong></h2>
+<p>It’s easy to see that many games have been subjected to reinforcement learning. Classic video games like Chess, Pong, Mario, Checkers, GO… (you get the idea) are all games that computers **crush **humans in.</p>
+<p>Why? Because it’s easy.</p>
+<p>In a game there are rules to follow and there are many iterations. It’s easy to simulate many games at a time and computers can learn at exponential rates. Computers don’t get tired, hungry, sleepy, etc. Unlike a human, where you only have limited time to learn something, computers can learn for hours-on-end. Not to mention, they are able to play multiple games every second. This is fundamentally why computers can easily get better than us. No wonder a 40 day old chess program was able to beat chess champion Garry Kasparov.</p>
+<p>But what about tasks that have no specific rules and that can be applied to the real world? How would we be able to apply reinforcement learning?</p>
+<p>Take for example driving a car. It would be idiotic to let a machine “trial and error” a car in real life. You can only imagine the horror that it would present. So how do we apply reinforcement learning? Same method before, with simulations.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*2gKV5Ptxl6uFA1Nj.gif" alt="“trial and error” approach in real life 😬"><em>“trial and error” approach in real life 😬</em></p>
+<p>We can simulate the physics of our world in a game engine, like Unity. We can give the computer specific rules, like moving forward and moving backwards. We can put the machine into an <em>environment</em> that is similar to the real world, like roads. We train the machine with our reward system in the environment until it gets good enough to make little to no mistakes.</p>
+<p>We then take our model and put it into a real world machine where it does the exact same thing. No real world chaos required!</p>
+<p>Well… there is a slight downside…</p>
+<p>The con to this is that simulations are just that… simulations. Nothing can exactly mimic our world. If there is even a slight disparity between the environment and the real world, the model might not work in the real world (and just look at the gif for the implications). When training a model for applications in the real world, if you can get over this hurdle, you will be able to be successful. But to make sure it’ll work, you will have to meticulously look over the environment just to get it right.</p>
+<p>And this begs the question… with the ability to create real world reinforcement models and machines… what are some of the applications in the real world?</p>
+<hr>
+<h2 id="real-world-applications">Real World Applications</h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*zNj8bBoWLDIb091R.gif" alt=""></p>
+<h3 id="autonomous-vehicles"><strong>Autonomous Vehicles</strong></h3>
+<p>Through simulation training, autonomous vehicles have been the subject of reinforcement learning for a while. To self-driving cars all the way to self-flying planes, the realm of autonomous vehicles is limitless.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2560/0*92o7nIFI-rF_XWIq.jpg" alt=""></p>
+<h3 id="health-care">Health Care</h3>
+<p>Reinforcement Learning has been used to figure out what kind of diagnoses works best with certain medicines, through trial and error in simulations. With AI taking over the medical industry, trial and error will become more useful.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*iFU9qYDZoqZp3M30.gif" alt=""></p>
+<h3 id="manufacturing"><strong>Manufacturing</strong></h3>
+<p>In conventional manufacturing, the machine would perform timed procedure moves. With the addition of reinforcement learning, it makes these machines more adaptable to do a certain task and change the tasks as you please. This imitates the hectic changing of many industries.</p>
+<hr>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>
+<p>Reinforcement learning is training an agent to perform a certain task by using a reward system in an environment.</p>
+</li>
+<li>
+<p>Rewards are the principal for reinforcement learning and we use reward shaping to create reward models for reinforcement learning models.</p>
+</li>
+<li>
+<p>Simulations can be used to train agents</p>
+</li>
+<li>
+<p>Reinforcement learning is being applied in many industries today.</p>
+</li>
+</ul>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://vanshs.com/" target="_blank" rel="noopener">My Thoughts</a></span
+        >
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://vanshs.com/blog/assets/main.js"></script>
+<script src="https://vanshs.com/blog/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

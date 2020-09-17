@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        A Beginner’s Guide Convolutional Neural Networks ::
+        Vansh
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Everything you need to know to get started with CNNs
+The range that computer vision applies to in modern society is broad. We use computer vision to diagnose major diseases. We use computer vision to unlock our phones.We even use computer vision as wacky snapchat filters. It was the creation of the Convolutional Neural Network that revolutionized the computer vision field and gave the ability for computers to “see.”"
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://vanshs.com/blog/technical/cnnintro/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://vanshs.com/blog/assets/style.css" />
+
+<link rel="stylesheet" href="https://vanshs.com/blog/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://vanshs.com/blog/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://vanshs.com/blog/img/favicon.png" />
+
+
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Beginner’s Guide Convolutional Neural Networks"/>
+<meta name="twitter:description" content="Everything you need to know to get started with CNNs
+The range that computer vision applies to in modern society is broad. We use computer vision to diagnose major diseases. We use computer vision to unlock our phones.We even use computer vision as wacky snapchat filters. It was the creation of the Convolutional Neural Network that revolutionized the computer vision field and gave the ability for computers to “see.”"/>
+
+
+
+<meta property="og:title" content="A Beginner’s Guide Convolutional Neural Networks" />
+<meta property="og:description" content="Everything you need to know to get started with CNNs
+The range that computer vision applies to in modern society is broad. We use computer vision to diagnose major diseases. We use computer vision to unlock our phones.We even use computer vision as wacky snapchat filters. It was the creation of the Convolutional Neural Network that revolutionized the computer vision field and gave the ability for computers to “see.”" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vanshs.com/blog/technical/cnnintro/" />
+<meta property="article:published_time" content="2020-02-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-12T00:00:00+00:00" /><meta property="og:site_name" content="Vansh" />
+
+
+
+
+
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog/technical">Technical Articles</a></li>
+        
+      
+        
+          <li><a href="/blog/thoughts">Thoughts</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog/technical">Technical Articles</a></li>
+      
+    
+      
+        <li><a href="/blog/thoughts">Thoughts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">A Beginner’s Guide Convolutional Neural Networks</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-12
+        </span>
+
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<p>Everything you need to know to get started with CNNs</p>
+<p><img src="https://cdn-images-1.medium.com/max/3200/1*JRK-pJjlZsaMIFX8YryP0Q.png" alt=""></p>
+<p>The range that computer vision applies to in modern society is broad. We use computer vision to diagnose major diseases. We use computer vision to unlock our phones.We even use computer vision as wacky snapchat filters. It was the creation of the <strong>Convolutional Neural Network</strong> that revolutionized the computer vision field and gave the ability for computers to “see.”</p>
+<hr>
+<h3 id="how-computers-see-images"><em>How Computers see Images</em></h3>
+<p>You and I see images by using light that hits our retinas and then processing the light in our brains to produce what we see. Computers don’t have this ability to read qualitative data such as light and interpret it in an abstract way to create an image. However, computers are really good with numbers and we give computers the ability to see by transferring it into this medium.</p>
+<p>Particularly, we break up images into three main color channels, red, green and blue. This is where the term RGB comes from. Each color channel is made up of a grid of pixels that have a value attached to them. The value represents how intense a certain pixel is, for example if there was a pixel in the blue channel, the value would tell you how blue the pixel is. Each value is measured out of 255, a seemingly arbitrary number but is 255 specifically because it can easily be represented in binary. The red, green and blue colour channels are stacked on top of one of each other and a combination of a pixels’ red, green and blue channels can give us a variety of colours. We essentially can quantify images now, which makes it much easier for computers to understand and <em>see</em> images.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*etbFvkIyqDIIxXtA" alt="“Building Facial Detection Software With JavaScript”, 2018"></p>
+<p><em>“Building Facial Detection Software With JavaScript”, 2018</em></p>
+<hr>
+<h3 id="what-are-cnns-and-why-are-they-special"><em>What are CNNs and Why are they Special?</em></h3>
+<p>CNNs is a type of neural network. A neural network is a concept derived from machine learning that mimics the functions of our brain to give the ability to computers to learn. CNNs are used in machine learning and artificial intelligence problems and is one of the more well known neural networks.</p>
+<p>Traditional object detection and image classification hinges on the idea that the thing being analyzed is in the same place for all images. Or, that it maintains a constant part of the image. This is a niche method of going about object detection and image classification. CNNs solve this problem by being able to recognize objects regardless of their position. CNNs introduce the ability to find objects in spatially different images.</p>
+<hr>
+<h2 id="how-cnns-work"><em><strong>How CNNs Work</strong></em></h2>
+<h3 id="filters"><em>Filters</em></h3>
+<p>A filter is a defined N x M (N &amp; M represents the size of the grid) grid of numbers that is multiplied with the original image multiple times. It is slid across the image by a predetermined *stride *value and is multiplied with the current numbers. Every time the filters grid values are multiplied by the image grid values, the output for each value is summed together and is put into a new grid called the convolved matrix. This process is generalizing characteristics of an image by using the values of the filters. The values of the filters are determined in the training phase of the model, which is where the ‘machine learning’ aspect of the CNN comes to play. The filters are the heart of convolutional neural networks.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*xL-DCRs8x6QBc-9A" alt="“Convolutional Filters, a Popular Choice”, 2018"></p>
+<p><em>“Convolutional Filters, a Popular Choice”, 2018</em></p>
+<h3 id="pooling"><em>Pooling</em></h3>
+<p>The pooling layer is used to generalize the features extracted from the convolutional layer and represent it in a compressed way. There are many different ways to pool the convolved matrix but the most used pooling method is max pooling. Max Pooling takes the largest number in a predefined section of the convolve matrix, essentially taking the most significant part of that section of the image.</p>
+<h3 id="padding"><em>Padding</em></h3>
+<p>One of the issues that arises with CNNs is the fact that filters can’t operate on edges, and there will be some parts of the filter not actually on a pixel value. Padding solves this by adding a ring of extra pixels around the original image, so the filters can process the full image. The value of the extra pixels that are added are 0. The reason for this is because 0 essentially ignores that value and represents no significance to the filter, essentially acting as a placeholder.</p>
+<h3 id="dropout"><em>Dropout</em></h3>
+<p>To make sure that the parameters of the CNN will not memorize the dataset and actually generalize data, dropout layers are used. Dropout layers turn off filters periodically to make sure that the weight of the parameters is shared equally among all the filters. If all the parameters play a decently sized role in the model, then the model will have an easier time generalizing.</p>
+<h3 id="training"><em>Training</em></h3>
+<p>With all the basic parts of the CNN layed out, the real fun finally begins. Training is what allows CNNs to actually work by giving them the ability to find the best parameters to get the best accuracy possible. The training phase consists of two steps, the loss function and the optimizer.</p>
+<p>The loss function calculates how bad the model did. It does this by taking the predicted output and comparing it to the actual output (label). It uses some functions (there are many) and outputs a total loss. The most common loss for CNN classification is categorical cross-entropy. The higher the loss, the worse the model did. Knowing this, if we can minimize this loss and get lower numbers, then our model will do better. To do this, we use optimizers.</p>
+<p>The optimizer minimizes the loss function by computing the gradient. The gradient is like instantaneous rate of change in calculus, and essentially tells you which direction to go in to minimize the loss. It then proceeds to go in the direction where the loss is lower. This process of loss function and optimizer is repeated over multiple epochs until the developer is pleased with the result.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*sq_czizYOs2OFTg-" alt="“Linear Regression Simplified — Ordinary Least Square vs Gradient Descent”, 2018"></p>
+<p><em>“Linear Regression Simplified — Ordinary Least Square vs Gradient Descent”, 2018</em></p>
+<hr>
+<h2 id="applications-of-cnns"><em><strong>Applications of CNNs</strong></em></h2>
+<h3 id="image-classification"><em>Image Classification</em></h3>
+<p>CNNs are really good at classifying images into different categories. The extracted features from the convolution layers allows this to happen. We have been able to classify a multitude of things to cancerous cells and brain tumors to simple dogs and cats separator.</p>
+<h3 id="image-segmentation--object-detection">Image Segmentation / Object Detection</h3>
+<p>Image Segmentation is image classification and figuring out where a certain object is in within the image. From CNNs, you can extract the feature maps of an image. Feature maps are the main features of an image, and dense layers can figure out the coordinates on the screen that pertain to the object. It can then also classify it. Things like snapchat filters run on this algorithm.</p>
+<p><img src="https://cdn-images-1.medium.com/max/4200/0*DaOL3gwRF5MXvH9d.jpeg" alt="“Object Detection With CNN, RCNN And Fast RCNN”, 2019"></p>
+<p><em>“Object Detection With CNN, RCNN And Fast RCNN”, 2019</em></p>
+<h3 id="gans">GANs</h3>
+<p>Using the feature maps produced by CNNs, we can create new images from them. To do this, we use a GAN or a general adversarial network which takes in noise and produces an image out of it. It learns how to do this by using a CNN to figure out how the image should look and common patterns between all images. (very simplified explanation).</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*OkvDxWuKpx43JqGA.gif" alt="“ThisPersonDoesNotExist.com uses AI to generate endless fake faces”, 2019"></p>
+<p><em>“ThisPersonDoesNotExist.com uses AI to generate endless fake faces”, 2019</em></p>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://vanshs.com/" target="_blank" rel="noopener">My Thoughts</a></span
+        >
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://vanshs.com/blog/assets/main.js"></script>
+<script src="https://vanshs.com/blog/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

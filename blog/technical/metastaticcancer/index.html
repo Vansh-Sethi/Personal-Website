@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Metastatic Cancer Detection in Histopathological Image Scans ::
+        Vansh
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="The Terrible Tale of Cancer Cancer continues to be one of the world’s most deadly diseases, killing over 10 million&#43; people a year. One of the reasons that cancer is so deadly is that if it’s left unattended even for a short period of time, it can have already taken over a biological system. Early diagnoses are the key to battling cancer, and machine learning is revolutionizing early diagnosis."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://vanshs.com/blog/technical/metastaticcancer/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://vanshs.com/blog/assets/style.css" />
+
+<link rel="stylesheet" href="https://vanshs.com/blog/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://vanshs.com/blog/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://vanshs.com/blog/img/favicon.png" />
+
+
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Metastatic Cancer Detection in Histopathological Image Scans"/>
+<meta name="twitter:description" content="The Terrible Tale of Cancer Cancer continues to be one of the world’s most deadly diseases, killing over 10 million&#43; people a year. One of the reasons that cancer is so deadly is that if it’s left unattended even for a short period of time, it can have already taken over a biological system. Early diagnoses are the key to battling cancer, and machine learning is revolutionizing early diagnosis."/>
+
+
+
+<meta property="og:title" content="Metastatic Cancer Detection in Histopathological Image Scans" />
+<meta property="og:description" content="The Terrible Tale of Cancer Cancer continues to be one of the world’s most deadly diseases, killing over 10 million&#43; people a year. One of the reasons that cancer is so deadly is that if it’s left unattended even for a short period of time, it can have already taken over a biological system. Early diagnoses are the key to battling cancer, and machine learning is revolutionizing early diagnosis." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vanshs.com/blog/technical/metastaticcancer/" />
+<meta property="article:published_time" content="2020-02-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-28T00:00:00+00:00" /><meta property="og:site_name" content="Vansh" />
+
+
+
+
+
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog/technical">Technical Articles</a></li>
+        
+      
+        
+          <li><a href="/blog/thoughts">Thoughts</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog/technical">Technical Articles</a></li>
+      
+    
+      
+        <li><a href="/blog/thoughts">Thoughts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Metastatic Cancer Detection in Histopathological Image Scans</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-28
+        </span>
+
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<h2 id="the-terrible-tale-of-cancer"><strong>The Terrible Tale of Cancer</strong></h2>
+<p>Cancer continues to be one of the world’s most deadly diseases, killing over <strong>10 million+</strong> people a year. One of the reasons that cancer is so deadly is that if it’s left unattended even for a short period of time, it can have already taken over a biological system. Early diagnoses are the key to battling cancer, and machine learning is revolutionizing early diagnosis.</p>
+<p>Machine learning is able to deduce patterns in things that humans can’t. This includes finding very abstract patterns in images. Using the power of machine learning, a model can be created to deduce cancerous cells from non-cancerous cells in image scans. **Convolutional Neural Networks **can also help with this problem, as they are perfect for finding relationships in spatial sensitive data like image scans.</p>
+<hr>
+<h2 id="metastatic-cancer"><strong>Metastatic Cancer</strong></h2>
+<p>Cancer usually starts in a primary place in the body and then spreads viciously. Cancer that results from the primary place in the body is metastatic cancer. It’s essentially secondary cancer that is a direct result of primary cancer. So why are we looking for secondary cancer and not the root cause? Because it’s much easier to deduce secondary cancer when scanning the whole body and when someone has cancer, metastatic cancer is usually throughout their body in small quantities. Finding metastatic cancer is like an indicator to determine if someone has a crippling case of cancer somewhere else in their body.</p>
+<p>Specifically, metastatic cancer can be found in different organs in the body. We can examine <strong>histopathological image scans</strong>, which are microscopic images of organs and cells within the body. Histopathological image scans have a great detail of different cells within what portion of the body one is looking at and can examine different diseases. However, it’s hard to tell in these scans if cancer is present or not since we aren’t all experts within the field of cancer research. <strong>Machine learning can be used to solve this issue, to tell if metastatic cancer is present in histopathological image scans.</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*CZyRAxGbS-R3B1ZW" alt="Histopathological Image Scan"></p>
+<p><em>Histopathological Image Scan</em></p>
+<hr>
+<h2 id="machine-learning--convolutional-neural-networks"><strong>Machine Learning + Convolutional Neural Networks</strong></h2>
+<p>Machine learning is all about getting machines to learn how to perform a specific task. Instead of giving explicit instructions, <strong>a machine learns to create its own instructions</strong>. In reality, all these instructions are mathematical values. A machine learning model is just a <strong>differentiable function</strong>, that takes in a predefined amount of input, uses variables (weights) to perform actions on the input and produces an output. It’s like <em>y = mx + b</em>. the <em>x</em> is the input of the model, <em>m</em> and <em>b</em> are the variables (weights) and the <em>y</em> is the output. The machine algorithm has to optimize the *m *and *b *weights so when given any input, it will always produce the desired output. How do we optimize our variables? There are essentially two steps, generating a loss and backpropagation.</p>
+<h3 id="the-loss-function"><em>The Loss Function</em></h3>
+<p>The loss function is a function that represents how bad the model performed. The higher the loss, the worse the model performs. We can generate the loss by using <strong>labelled data</strong>. We can give the model input of x and let it produce its own output based on its weights. Since we have labelled data, we know what the output of the model should be. We can compare the model’s output to the real output and see the difference. For example, the model’s output might be 3 and the real output might be 5. A loss for this example could be 2, which is how far apart the two outputs were. We want the model to always produce a loss of 0, which means we need to <strong>minimize the loss function</strong>.</p>
+<h3 id="backpropagation"><em>Backpropagation</em></h3>
+<p>Backpropagation is the process of going back to the model’s weights and changing them to minimize the loss function. It does this by taking the loss function and calculating it’s gradient. The gradient is the instantaneous rate of change of the generated loss, and looking upon the gradient, we can go to the lowest point of our gradient where the weights produce a lower loss. This is called <strong>gradient descent</strong> and is key in a lot of machine learning algorithms. We can repeat this process until our loss keeps getting smaller and smaller, and while our model keeps getting better and better. Usually, a model will have thousands of weights, so the model can become very accurate when producing the output.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*LfEsG8tABE9kxV1k" alt="Gradient Descent Visualized"></p>
+<h3 id="convolutional-neural-networks"><em>Convolutional Neural Networks</em></h3>
+<p>Convolutional Neural Networks employ all the principals of machine learning mentioned above yet incorporate a method that can analyze spatial data, such as images and audio. It uses <strong>filters</strong>, a machine learning algorithm that uses weights to scan across the input data. Filters are a grid of weights that scan over the input data and at each scan, multiply the weight by the input. Since images are also just grids of values, convolutional filters can easily go over them. After a <strong>convolution</strong> or when it’s done scanning the image, the results of the scanning (the multiplied product) are pooled together. What the pooling is basically doing is representing the input data in a smaller concise way with all the important features. Essentially what convolutional neural networks do is that they deduce the special features of an image and put it all together.</p>
+<p><a href="https://medium.com/@vanshsethi17/a-beginners-guide-convolutional-neural-networks-f40d64453904">For a more comprehensible explanation, check out this article I wrote explaining convolutional neural networks in more detail.</a></p>
+<hr>
+<h2 id="metastatic-cancer-detection-model"><strong>Metastatic Cancer Detection Model</strong></h2>
+<h3 id="the-data"><em>The Data</em></h3>
+<p>The data used to create the model was the <a href="https://www.kaggle.com/c/histopathologic-cancer-detection/data">*Histopathologic Cancer Detection</a>* labelled data on Kaggle. It comes with over 150 000+ images of histopathologic image scans with every image labelled with either a 1 or a 0. 0 Indicates no metastatic cancer is prevalent in the image and 1 indicated that metastatic cancer is within the image. Each image is 96 pixels by 96 pixels by 3 colour channels (Red, Blue, Green). We can represent each image by a grid of values of 96x96x3.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*oCjX88yHX50lGoEneNbtWA.png" alt="Examples of Data"></p>
+<p><em>Examples of Data</em></p>
+<hr>
+<h3 id="the-model"><em>The Model</em></h3>
+<p>The conception of the model was based on the principles of machine learning and tailored toward the task at hand.</p>
+<p>Convolutional layers were used for the <strong>feature extraction</strong> of the images, to generalize what a cancerous image looks like and what a non-cancerous image looks like. The layers are 2D convolutional neural networks meaning that the convolutional layers take 3D matrices of values (the representation of the images).</p>
+<p>The max pool layers take the feature maps created by the convolutional layers and <strong>generalize</strong> them. It does this by taking max value for every 3x3 square in the image. This way, when the feature maps are given to the other parts of the neural network, it can have an easier time figuring out if an image contains cancer or not.</p>
+<p>The dropout layers that are scattered throughout the network are to make sure that the model learns to perform the task and <strong>doesn’t just memorize the data</strong>. It does this by turning off certain weights during the loss calculation, which leads to a slightly lower accuracy yet generalizes to a wide array of images.</p>
+<p>Lastly, the dense layers make sense of the feature maps and actually <strong>figure out if there is cancer or not</strong>. The last layer contains one node or output, which will either be a 0 or 1. 0 meaning no cancer and 1 meaning cancer. The loss function will use this to calculate the loss and backpropagation will optimize the weights in these layers.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> keras<span style="color:#f92672">.</span>Sequential([
+<span style="color:#75715e">#   Convolutional Layers for creating Feature Maps</span>
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">4</span>,input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">45</span>,<span style="color:#ae81ff">45</span>,<span style="color:#ae81ff">3</span>)),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization(),
+    
+<span style="color:#75715e">#   Dropout used to prevent overfitting</span>
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(<span style="color:#ae81ff">64</span>,<span style="color:#ae81ff">5</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>MaxPool2D(),
+                         
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Flatten(),
+    
+<span style="color:#75715e">#   Dense layers to make final prediction</span>
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">10000</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">1000</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">200</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">50</span>),
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.3</span>),
+    
+<span style="color:#75715e">#   Final prediction (0 = No cancer; 1 = Cancer)</span>
+    keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">2</span>,activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;softmax&#34;</span>)
+])
+</code></pre></div><p>The model contains over **51 million+ **parameters, meaning it can attain a really good accuracy.</p>
+<h3 id="loss-function--optimization"><em>Loss Function + Optimization</em></h3>
+<p>The loss function used for this model was the <strong>categorical cross-entropy loss</strong>. This loss takes the model output and performs the log function and multiplies it with the real loss. It uses the log function because as you start getting to the real answer, the loss gets exponentially better.</p>
+<p>The optimizer used for this model was the <strong>Adam</strong> optimizer. This optimizer performs regular backpropagation but as it gets closer to the global minimum of the loss function, it slows down how fast it optimizer to prevent overstepping the minimum. It’s a pretty standard optimization function.</p>
+<h3 id="training"><em>Training</em></h3>
+<p>The model trained for over <strong>10 epochs</strong> or performed backpropagation in** batches of 100 images** each 10 times over the whole dataset. 20% of the images were used for validation or making sure that the model was training. After a couple of hours of training, the model was finished.</p>
+<hr>
+<h2 id="the-results-are-in"><strong>The Results are in…</strong></h2>
+<p>The model got an 80% accuracy rate of detecting cancer. Which means, 80% will be right in its prediction. Here are a few examples:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*J5ESRhgykdlOyiKadVKHpQ.png" alt="Examples of the Model"></p>
+<p><em>Examples of the Model</em></p>
+<p>Overall, the model works very well and is a viable option when detecting cancer.</p>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://vanshs.com/" target="_blank" rel="noopener">My Thoughts</a></span
+        >
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://vanshs.com/blog/assets/main.js"></script>
+<script src="https://vanshs.com/blog/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

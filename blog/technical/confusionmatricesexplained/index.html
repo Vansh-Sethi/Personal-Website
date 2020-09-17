@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Confusion Matrices Explained ::
+        Vansh
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Explaining how these vital visual representations of machine learning models work.
+A Data Scientists’ Dilemma Big companies are getting involved with machine learning like never before. Especially with the necessity of data scientists steadily growing in big companies, data scientists bare a big job in the machine learning consulting space. One issue that arises from data scientists in big companies is the issue of communication with other branches in the company."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://vanshs.com/blog/technical/confusionmatricesexplained/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://vanshs.com/blog/assets/style.css" />
+
+<link rel="stylesheet" href="https://vanshs.com/blog/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://vanshs.com/blog/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://vanshs.com/blog/img/favicon.png" />
+
+
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Confusion Matrices Explained"/>
+<meta name="twitter:description" content="Explaining how these vital visual representations of machine learning models work.
+A Data Scientists’ Dilemma Big companies are getting involved with machine learning like never before. Especially with the necessity of data scientists steadily growing in big companies, data scientists bare a big job in the machine learning consulting space. One issue that arises from data scientists in big companies is the issue of communication with other branches in the company."/>
+
+
+
+<meta property="og:title" content="Confusion Matrices Explained" />
+<meta property="og:description" content="Explaining how these vital visual representations of machine learning models work.
+A Data Scientists’ Dilemma Big companies are getting involved with machine learning like never before. Especially with the necessity of data scientists steadily growing in big companies, data scientists bare a big job in the machine learning consulting space. One issue that arises from data scientists in big companies is the issue of communication with other branches in the company." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vanshs.com/blog/technical/confusionmatricesexplained/" />
+<meta property="article:published_time" content="2020-03-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-12T00:00:00+00:00" /><meta property="og:site_name" content="Vansh" />
+
+
+
+
+
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog/technical">Technical Articles</a></li>
+        
+      
+        
+          <li><a href="/blog/thoughts">Thoughts</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog/technical">Technical Articles</a></li>
+      
+    
+      
+        <li><a href="/blog/thoughts">Thoughts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Confusion Matrices Explained</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-03-12
+        </span>
+
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<p>Explaining how these vital visual representations of machine learning models work.</p>
+<h2 id="a-data-scientists-dilemma"><strong>A Data Scientists’ Dilemma</strong></h2>
+<p>Big companies are getting involved with machine learning like never before. Especially with the necessity of data scientists steadily growing in big companies, data scientists bare a big job in the machine learning consulting space. One issue that arises from data scientists in big companies is the issue of communication with other branches in the company. Miscommunication and misinterpretation between data scientists and non-data scientists cost lots of money and time. The question becomes, how do data scientists communicate reports and metrics about their current projects to upper management? The answer used to be building a structure in the company with lots of confusion, however recently, the agreed-upon medium has become <strong>confusion matrices</strong> (it’s a bad name) which are visual representations of machine learning models.</p>
+<hr>
+<h2 id="confusion-matrices--the-general-explantation"><strong>Confusion Matrices — The General Explantation</strong></h2>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*baiNgcU16pct7njb" alt=""></p>
+<p>To clearly understand how confusion matrices work, it is first important to understand the goal of any machine learning model. A machine learning model takes in an input and produces an output. Machine learning is where we make this process even better and teach the model how to give the desired output every time. There is a label to the input which is the true label and the predicted label which is the model’s output. **Confusion matrices are a visual representation of how accurate a model is for a test set. **A confusion matrix compares the true labels to the predicted labels of a model. It adds a value to a certain portion of a N x N grid, where N represents the number of labels in a test set. Here are the cases for the confusion matrix:</p>
+<ul>
+<li>
+<p><strong>True Positive</strong>: The true label is the same as the predicted label, and the label represents a positive match in the data.</p>
+</li>
+<li>
+<p><strong>True Negative</strong>: The true label is the same as the predicted label, and the label represents a negative match in the data.</p>
+</li>
+<li>
+<p><strong>False Positive</strong>: The true label is different than the predicted label, and the true label is a negative match in the data whereas the predicted label is a positive match in the data.</p>
+</li>
+<li>
+<p><strong>False Negative</strong>: The true label is different than the predicted label, and the true label is a positive match in the data whereas the predicted label is a negative match in the data.</p>
+</li>
+</ul>
+<p>The way a confusion matrix is created and filled with values is part of the testing phase of the model. The model is run on a predefined amount of data points and is made to predict each and every one. For every data point and it’s prediction, one of the following cases will be filled and the grid corresponding to the case will go up by one. This happens until the whole test set is iterated through and the grid is filled up.</p>
+<p>It’s important to know that the amount of cases for a confusion matrix grows as the number of labels goes up. The more labels, the more complex the confusion matrix will inevitably be.</p>
+<hr>
+<h2 id="a-practical-example"><strong>A Practical Example</strong></h2>
+<p>Let’s analyze a practical example of a confusion matrix being used.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*Jm2Bqi7-oy1lAFwn" alt=""></p>
+<p>Here we are classifying cats and dogs with a model. There were 100 data points in the test set of the model. You can see the breakdowns above, but only 25% of the data points were guessed correctly. This is considered a bad model since it doesn’t get most of the data points correctly.</p>
+<h3 id="a-splash-of-colour"><em>A splash of colour!</em></h3>
+<p>Colour is very common in confusion matrices. Colour is used because of the need to communicate these models graphically and easier to upper management. The colour usually represents how much a certain grid was predicted. Usually, the more intense the colour, the higher the value of the grid. Using colours, it can be easier to tell how good a model is.</p>
+<p><strong>Pro tip: When there is a diagonal of intense colours, it usually means the model is good because those are the true positive grids.</strong></p>
+<p><img src="https://cdn-images-1.medium.com/max/2014/0*GgL5EFRFpLvwsoFK" alt=""></p>
+<h3 id="lets-create-a-confusion-matrix"><strong>Let’s create a confusion matrix!</strong></h3>
+<p>Let’s create a confusion matrix on cancer detection on images. Here are the parameters.</p>
+<ul>
+<li>
+<p>100 data points in the test set</p>
+</li>
+<li>
+<p>2 classes; one class that represents that cancer is within the image and one class that represents no cancer within the image</p>
+</li>
+</ul>
+<p>Since we know that there are 2 classes, it has to be a two by two grid with four sections. Since there are 100 data points, we have to test our model on each one and add values to the grid. After doing the 100 data points and adding it to the confusion matrix we get:</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*RCkxWEJJrEFZ0r0a" alt=""></p>
+<p>Here’s our created confusion matrix. As you can see, we have the diagonal colour shift, which is an easy tell that this is a good model!</p>
+<hr>
+<h2 id="bridging-the-gap-of-machine-learning"><strong>Bridging the Gap of Machine Learning</strong></h2>
+<p>Confusion matrices are making it much easier for anyone to understand how good a model performs. So the next time you see a confusion matrix, you can critique the model. Confusion matrices are fundamentally making it easier for upper management and other non-machine learning developers to understand how these models work, which saves lots of money and time. This is the wonderous world of confusion matrices.</p>
+<!-- raw HTML omitted -->
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://vanshs.com/" target="_blank" rel="noopener">My Thoughts</a></span
+        >
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://vanshs.com/blog/assets/main.js"></script>
+<script src="https://vanshs.com/blog/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

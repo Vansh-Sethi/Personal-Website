@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Technicals on Vansh</title>
+    
+    
+    
+    <link>https://vanshs.com/blog/technical/</link>
+    <description>Recent content in Technicals on Vansh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vanshs.com/blog/technical/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>T-Cell Receptor Sequencing using Neural Networks</title>
+      <link>https://vanshs.com/blog/technical/tcellsequencingneuralnetworks/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/tcellsequencingneuralnetworks/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          The Greatest Threat to Humanity… What is the greatest threat to humanity? Some might say that it’s a nuclear fallout. Others might say it’s the threat of a large asteroid hitting our planet. In fact, most people believe that the biggest threat to humanity is some out of this world, unimaginable thing that will wipe out humans in one sweep. Well… the greatest threat to humanity is right under our noses.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>How Blockchain Works</title>
+      <link>https://vanshs.com/blog/technical/howblockchainworks/</link>
+      <pubDate>Sat, 18 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/howblockchainworks/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Everything you need to know about this growing technology
+Do You Trust Me? 😈 Our entire society runs on trust. You trust your boss to pay you. You trust the government to ensure your security. You trust your bank to not steal your money and run away. We blindly trust so many institutions and people without giving it a second thought.
+But what if something happens? Your boss doesn’t pay you.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Confusion Matrices Explained</title>
+      <link>https://vanshs.com/blog/technical/confusionmatricesexplained/</link>
+      <pubDate>Thu, 12 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/confusionmatricesexplained/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Explaining how these vital visual representations of machine learning models work.
+A Data Scientists’ Dilemma Big companies are getting involved with machine learning like never before. Especially with the necessity of data scientists steadily growing in big companies, data scientists bare a big job in the machine learning consulting space. One issue that arises from data scientists in big companies is the issue of communication with other branches in the company.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Metastatic Cancer Detection in Histopathological Image Scans</title>
+      <link>https://vanshs.com/blog/technical/metastaticcancer/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/metastaticcancer/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          The Terrible Tale of Cancer Cancer continues to be one of the world’s most deadly diseases, killing over 10 million+ people a year. One of the reasons that cancer is so deadly is that if it’s left unattended even for a short period of time, it can have already taken over a biological system. Early diagnoses are the key to battling cancer, and machine learning is revolutionizing early diagnosis.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Using LSTMs to Predict Stock Prices</title>
+      <link>https://vanshs.com/blog/technical/lstmstock/</link>
+      <pubDate>Sun, 16 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/lstmstock/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Face it. We’re dumb. A blindfolded monkey could manage a portfolio better than any human ever could. No, I’m actually serious. Numerous studies show that monkeys outperform humans in the stock market all the time. A monkey allegedly generated 8x more profit in a quarter than traders on the New York Stock Exchange. How can a clueless primate beat the so-called “geniuses” of wall street? The answer, dumb luck.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>A Beginner’s Guide Convolutional Neural Networks</title>
+      <link>https://vanshs.com/blog/technical/cnnintro/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/cnnintro/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Everything you need to know to get started with CNNs
+The range that computer vision applies to in modern society is broad. We use computer vision to diagnose major diseases. We use computer vision to unlock our phones.We even use computer vision as wacky snapchat filters. It was the creation of the Convolutional Neural Network that revolutionized the computer vision field and gave the ability for computers to “see.”
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Types of Neural Networks</title>
+      <link>https://vanshs.com/blog/technical/typesofneuralnetworks/</link>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/typesofneuralnetworks/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          There are an abundance of neural networks that have captivating properties to them. Here are the most notable ones.
+Machine learning — a subset of Artificial Intelligence — incorporates neural networks to create some amazing software that we use on a daily basis.
+If you used Google to find this medium article, you used Google’s neural network that ranks the most relevant pages based on the keyword(s) you gave it.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning: a Subtle Introduction</title>
+      <link>https://vanshs.com/blog/technical/reinforcementlearningintro/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/technical/reinforcementlearningintro/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          On February 10th, 1996, IBM’s Deep Blue AI beat world champion Garry Kasparov at a game of chess.
+Google’s Alpha Go AI is the best GO player in the world and has crushed world champions over and over again.
+ But how is this even possible? How is it possible that a computer can outsmart humans? The answer… Reinforcement Learning.
+What is Reinforcement Learning? Reinforcement learning is a branch of Machine Learning and AI.
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

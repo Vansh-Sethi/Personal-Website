@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Vansh</title>
+    
+    
+    
+    <link>https://vanshs.com/blog/posts/</link>
+    <description>Recent content in Posts on Vansh</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vanshs.com/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Welcome to My Blog</title>
+      <link>https://vanshs.com/blog/posts/about/</link>
+      <pubDate>Tue, 15 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://vanshs.com/blog/posts/about/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Heyo! 👋 My name is Vansh Sethi and I am a 16 year-old technologist, particularly interested in the intersections of artificial intelligence and health.
+I&amp;rsquo;ve worked at a couple of early stage startups building some machine learning models and A.I tools.
+I&amp;rsquo;m trying to meet new people and discuss new ideas and more than anything else, form really awesome relationships.
+If you wish to contact me —and please feel free to!
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

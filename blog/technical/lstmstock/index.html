@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Using LSTMs to Predict Stock Prices ::
+        Vansh
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Face it. We’re dumb. A blindfolded monkey could manage a portfolio better than any human ever could. No, I’m actually serious. Numerous studies show that monkeys outperform humans in the stock market all the time. A monkey allegedly generated 8x more profit in a quarter than traders on the New York Stock Exchange. How can a clueless primate beat the so-called “geniuses” of wall street? The answer, dumb luck."
+/>
+<meta
+  name="keywords"
+  content=""
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://vanshs.com/blog/technical/lstmstock/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://vanshs.com/blog/assets/style.css" />
+
+<link rel="stylesheet" href="https://vanshs.com/blog/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://vanshs.com/blog/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://vanshs.com/blog/img/favicon.png" />
+
+
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://vanshs.com/blog/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Using LSTMs to Predict Stock Prices"/>
+<meta name="twitter:description" content="Face it. We’re dumb. A blindfolded monkey could manage a portfolio better than any human ever could. No, I’m actually serious. Numerous studies show that monkeys outperform humans in the stock market all the time. A monkey allegedly generated 8x more profit in a quarter than traders on the New York Stock Exchange. How can a clueless primate beat the so-called “geniuses” of wall street? The answer, dumb luck."/>
+
+
+
+<meta property="og:title" content="Using LSTMs to Predict Stock Prices" />
+<meta property="og:description" content="Face it. We’re dumb. A blindfolded monkey could manage a portfolio better than any human ever could. No, I’m actually serious. Numerous studies show that monkeys outperform humans in the stock market all the time. A monkey allegedly generated 8x more profit in a quarter than traders on the New York Stock Exchange. How can a clueless primate beat the so-called “geniuses” of wall street? The answer, dumb luck." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://vanshs.com/blog/technical/lstmstock/" />
+<meta property="article:published_time" content="2020-02-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-16T00:00:00+00:00" /><meta property="og:site_name" content="Vansh" />
+
+
+
+
+
+
+  </head>
+  <body class="">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/blog/technical">Technical Articles</a></li>
+        
+      
+        
+          <li><a href="/blog/thoughts">Thoughts</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/blog/technical">Technical Articles</a></li>
+      
+    
+      
+        <li><a href="/blog/thoughts">Thoughts</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Using LSTMs to Predict Stock Prices</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-16
+        </span>
+
+        
+      
+
+      
+
+
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<h3 id="face-it-were-dumb">Face it. We’re dumb.</h3>
+<p>A blindfolded monkey could manage a portfolio better than any human ever could. No, I’m actually serious. Numerous studies show that monkeys outperform humans in the stock market all the time. A monkey allegedly generated 8x more profit in a quarter than traders on the New York Stock Exchange. How can a clueless primate beat the so-called “geniuses” of wall street? The answer, <strong>dumb luck</strong>.</p>
+<p>Humans try to gauge and predict stock prices all the time, using fancy statistics and trends to figure it out. But the truth is, humans aren’t able to comprehend the different variables that go into a stock price. We aren’t able to synthesize a company’s reputation, the projects they’ve announced and are working on, track record, past stock market data and factoring all that into making informed decisions on the stock market. We can’t consider every single variable and stat that ever existed about a company. But, computers can. More specifically, neural networks are designed to do exactly that.</p>
+<hr>
+<h2 id="long-short-term-memory-networks">Long Short Term Memory Networks</h2>
+<p>A neural network in a mathematical sense is a differentiable function that takes in an input and computes an output. Essentially, it’s your standard f(x) but instead of only one variable “x”, there are 1,000,000’s of x’s or parameters. Our goal is to optimize these parameters, as then we can feed in any input and get the desired output. These are neural networks in a nutshell, but an LSTM has some special properties.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*egcWK45M2JNLbHCE" alt="Don’t worry, I’ll break it down"><strong>Don’t worry, I’ll break it down</strong></p>
+<p>A Long-Short Term Memory neural network is comprised of LSTM units or cells. These units have special computations to them and pass their output along to the next unit as input. In short, the main goal of an LSTM is to account for data that was passed in before into the output. Things like time-series data or stock market data are dependent on past versions of itself, and using an LSTM, it remembers the past and tries to predict the future. Here’s how it works.</p>
+<hr>
+<h3 id="how-data-is-propagated">How data is propagated</h3>
+<p>In stock market data and generally data that relies on past iterations of itself, at different times data was different. At a certain time, a piece of data was X. This is called time steps and data is entered into an LSTM cell broken down into its corresponding time step. For example, the 3rd LSTM unit takes in the 3rd time step of data or X3.</p>
+<blockquote>
+<p>Quick Notation: <em><strong>t-1</strong></em> indicates the values of the last LSTM cell and <em><strong>t</strong></em> is the output of the current LSTM cell.</p>
+</blockquote>
+<h3 id="cell-state">Cell State</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*k3Q8trbDwYfxAw0h" alt="The Cell State"></p>
+<p><em>The Cell State</em></p>
+<p>The notation for C indicates the cell state of the LSTM. The cell state is a vector of values that are passed through each cell in its own path. The current cell can use this cell state in its calculations or change the cell state entirely. Because of this, the cell state vector acts as the long-term memory part of the neural network. This is because it interacts with every LSTM unit and can thus factor in every unit when calculating the output of the next unit. This is where the long-term memory aspect of the LSTM comes from.</p>
+<h3 id="input-gate">Input Gate</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*x-gFnlhFTY4gL0U6" alt="The Input Gate"></p>
+<p><em>The Input Gate</em></p>
+<p>The input gate takes in the output of the hidden state (*ht-1) *of the last cell and the labelled data input (Xt) and uses this information to see if the cell state © should be changed. It first multiplies the data input and hidden state together, creating one new vector of values. It then takes the sigmoid and hyperbolic tangent function of this vector and multiplying those results together. If the product is above some trained parameter, it is then added to the cell state, essentially making the cell state memorize this important info. If it’s not added to the cell state, then it can be regarded as not important to the long term memory of the network. In short, the input gate determines if the information is important for the long term.</p>
+<h3 id="forget-gate">Forget Gate</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*5AXILkiCrFf9LblE" alt="The Forget Gate"></p>
+<p><em>The Forget Gate</em></p>
+<p>The forget gate takes in the output of the hidden state at the previous time step (ht-1) and the data input of the current time step (Xt). It then multiplies them together and applies the sigmoid activation to it. If the output is above some trained parameter, then the cell state is completely reset to 0, essentially forgetting it’s long term memory. This is why it’s called the forget gate because it has the capability to forget everything that was learned thus far. This helps in time-series predictions as a piece of data will act as a reset to the current trend and the LSTM needs to factor that in. However, an LSTM will rarely pass the forget gate.</p>
+<h3 id="output-gate">Output Gate</h3>
+<p><img src="https://cdn-images-1.medium.com/max/2000/0*7j0NhG_pa3y8PeNR" alt="The Output Gate"></p>
+<p><em>The Output Gate</em></p>
+<p>The output gate prepares the next hidden state vector for the next cell (ht). It factors in the last hidden state vector and input data and applies a few functions to it. This is the short-term memory aspect of the neural network, as it is propagating new information into the next cell.</p>
+<p>Notice how all three gates work together to create the cell state ©. At the end of all the units, the cell state is passed through dense layers which makes sense of all the long term memory and important info about the data to create a prediction of the next time step. Everything leads up to creating this cell state and it’s the heart of the LSTM. Training the LSTM network is done to make sure that the long term info makes it out into the end. Now you have a good understanding of LSTMs, let’s see how I applied them to stock market data.</p>
+<hr>
+<h2 id="stock-market-predictor">Stock Market Predictor</h2>
+<p><a href="https://colab.research.google.com/drive/1wWCZK1IalVoc0JThyDktRKTDbkNkgJzi">*Created using Tensorflow and Keras.</a></p>
+<h3 id="the-data">The Data</h3>
+<p>The data that was used for this project was Apple’s stock price over the last 5 years. It was broken down into time steps of 10 minutes each. A neural network needs examples to train and needs labelled data, so the data was inputted in a specific way. The input was 50 timesteps and the label (which is what the neural network is trying to predict) is the 51st timestep. The neural network tries to predict the price at the next time step, and the data was created accordingly to train the neural network.</p>
+<h3 id="the-architecture">The Architecture</h3>
+<p>Surprise, surprise! I used a lot of LSTMs for this neural network. Each LSTM had 96 cells in it and returns the cell state into the next LSTM as input. In the end, it had 2 dense layers that took in the output of the LSTM layers and made sense of it. The last dense layer has one node in it, which indicates that it outputs one number, the predicted value of the next time step. It had over 1 million parameters it could optimize. The dropout layers were used to make sure that the neural network wasn’t just memorizing the data and the output. I know, all this work just to find the next value for the next timestep.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    model <span style="color:#f92672">=</span> Sequential([
+
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>, return_sequences<span style="color:#f92672">=</span>True, input_shape<span style="color:#f92672">=</span>(<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">1</span>)),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>, return_sequences<span style="color:#f92672">=</span>True),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>, return_sequences<span style="color:#f92672">=</span>True),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>, return_sequences<span style="color:#f92672">=</span>True),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>, return_sequences<span style="color:#f92672">=</span>True),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>LSTM(units<span style="color:#f92672">=</span><span style="color:#ae81ff">96</span>),
+
+    layers<span style="color:#f92672">.</span>Dropout(<span style="color:#ae81ff">0.2</span>),
+    layers<span style="color:#f92672">.</span>Dense(<span style="color:#ae81ff">1</span>)
+    ])
+</code></pre></div><hr>
+<h3 id="training">Training</h3>
+<p>This model was trained using the popular Adam optimizer and MSE loss function. The loss function is how bad the model performed and the optimizer finds the minimum of the function, which are the best parameters for the network. It ran over 100 epochs and reached a loss &lt; 0.00001 (it performs pretty good).</p>
+<h3 id="the-results-are-in">The Results are In</h3>
+<p>So these are few examples of stocks it was used to predict. The blue shows the predicted price and the red shows the actual price.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*kRGIyZomawxg1ylgs_d2uA.png" alt="On Randomly Generated Stock Data"></p>
+<p><em>On Randomly Generated Stock Data</em></p>
+<p>Overall, the model works decently well… but that doesn’t mean you should use this on the stock market. The stock market is very volatile and this model only uses past trends of a stock to predict the next.</p>
+
+    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >Vansh Sethi&#39;s Blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://vanshs.com/" target="_blank" rel="noopener">My Thoughts</a></span
+        >
+        
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://vanshs.com/blog/assets/main.js"></script>
+<script src="https://vanshs.com/blog/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>
